@@ -15,24 +15,25 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 CookieDirectory = "C:/Users/Felix Murrenhoff/Desktop/Java/Bachelorarbeit/Cookiefile/"
+ProfileDirectory = "C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/"
 
-HannesLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/fz9a3ja0.dev-edition-default'
+HannesLocal = ProfileDirectory + 'fz9a3ja0.dev-edition-default'
 HannesProxy = "217.61.5.209:3128"
 HannesInteressen = ['Fußball','Frankfurt']
 
-DanielLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/p5wq7bed.DanielKraemer'
+DanielLocal = ProfileDirectory + 'p5wq7bed.DanielKraemer'
 DanielProxy = "178.238.228.187:9090"
 #DanielInteressen = ['Fußball','Frankfurt']
 
-LindaLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/nxhb41z9.LindaMeier'
+LindaLocal = ProfileDirectory + 'nxhb41z9.LindaMeier'
 LindaProxy = "88.99.0.45:3128"
 #LindaInteressen = ['Fußball','Frankfurt']
 
-HildegardLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/i0hpiycf.HildegardEvers'
+HildegardLocal = ProfileDirectory + 'i0hpiycf.HildegardEvers'
 HildegardProxy = "5.189.162.175:3128"
 #HildegardInteressen = ['Fußball','Frankfurt']
 
-KaiLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/akj173fm.KaiKrefeld'
+KaiLocal = ProfileDirectory + 'akj173fm.KaiKrefeld'
 KaiProxy = "46.101.157.198:3128"
 #KaiInteressen = ['Fußball','Frankfurt']
 
@@ -204,7 +205,7 @@ def YoutubeLiker(driver, StringId, searchTerms):
 def BildReader(driver, StringId, searchTerms):
     driver.maximize_window()
     driver.get('https://www.bild.de/')
-    cookies = pickle.load(open(("C:/Users/Felix Murrenhoff/Desktop/Java/Bachelorarbeit/Cookiefile/" +StringId+ "Bild"+ "Cookies.pkl"),"rb"))
+    cookies = pickle.load(open((CookieDirectory +StringId+ "Bild"+ "Cookies.pkl"),"rb"))
     for cookie in cookies:
         driver.add_cookie(cookie)
 
