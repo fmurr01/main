@@ -1,0 +1,5 @@
+library=
+name=NSS Internal PKCS #11 Module
+parameters=configdir='sql:C:\\Users\\FELIXM~1\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\NXHB41~1.LIN' certPrefix='' keyPrefix='' secmod='secmod.db' flags=optimizeSpace updatedir='' updateCertPrefix='' updateKeyPrefix='' updateid='' updateTokenDescription=''  manufacturerID='Mozilla.org' libraryDescription='PSM-interne Krypto-Dienste' cryptoTokenDescription='Allgemeine Krypto-Dienste' dbTokenDescription='das Software-Sicherheitsmodul' cryptoSlotDescription='PSM-interne Kryptographie-Dienste' dbSlotDescription='PSM private Schlüssel' FIPSSlotDescription='FIPS 140 Krypto-, Schlüssel- und Zertifikat-Dienste' FIPSTokenDescription='das Softw.-Sicherh.modul (FIPS)' minPS=0
+NSS=Flags=internal,critical trustOrder=75 cipherOrder=100 slotParams=(1={slotFlags=[ECC,RSA,DSA,DH,RC2,RC4,DES,RANDOM,SHA1,MD5,MD2,SSL,TLS,AES,Camellia,SEED,SHA256,SHA512] askpw=any timeout=30})
+
