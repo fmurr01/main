@@ -25,5 +25,10 @@ def YoutubeLiker(driver, StringId, searchTerms, directory):
         LikeButton.click()
         time.sleep(15) #validate view
 
-    driver.back()
+    loop = True
+    while loop:
+        driver.back()
+        time.sleep(5)
+        if "results?search" in driver.current_url:
+            loop = False
     #Dumper(driver, StringId, "Youtube", directory)

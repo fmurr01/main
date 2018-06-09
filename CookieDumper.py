@@ -10,29 +10,13 @@ import random
 from random import randint
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from configparser import SafeConfigParser
 
+config = SafeConfigParser()
+config.read('config.ini')
 
-CookieDirectory = "C:/Users/Felix Murrenhoff/Desktop/Java/Bachelorarbeit/Cookiefile/"
-
-HannesLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/fz9a3ja0.dev-edition-default'
-HannesProxy = "217.61.5.209:3128"
-HannesInteressen = ['Fußball','Frankfurt']
-
-DanielLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/p5wq7bed.DanielKraemer'
-DanielProxy = "178.238.228.187:9090"
-#DanielInteressen = ['Fußball','Frankfurt']
-
-LindaLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/nxhb41z9.LindaMeier'
-LindaProxy = "88.99.0.45:3128"
-#LindaInteressen = ['Fußball','Frankfurt']
-
-HildegardLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/i0hpiycf.HildegardEvers'
-HildegardProxy = "5.189.162.175:3128"
-#HildegardInteressen = ['Fußball','Frankfurt']
-
-KaiLocal = 'C:/Users/Felix Murrenhoff/AppData/Roaming/Mozilla/Firefox/Profiles/akj173fm.KaiKrefeld'
-KaiProxy = "46.101.157.198:3128"
-#KaiInteressen = ['Fußball','Frankfurt']
+CookieDirectory = config.get('directories', 'cookiedirectory')
+ProfileDirectory = config.get('directories', 'profiledirectory')
 
 def Proxy(proxy):
 
@@ -46,13 +30,13 @@ def Proxy(proxy):
     return desired_capability
 
 
-def CookieDumper(profile, proxy, StringId, page, delay):
-    TmpProfile = webdriver.FirefoxProfile(profile)
-    TmpDriver = webdriver.Firefox(firefox_profile=TmpProfile, capabilities=Proxy(proxy))
+def CookieDumper(StringID ,page, delay):
+    TmpProfile = webdriver.FirefoxProfile(ProfileDirectory + config.get('profiles', StringID))
+    TmpDriver = webdriver.Firefox(firefox_profile=TmpProfile, capabilities=Proxy(config.get('proxy', StringID)))
     TmpDriver.get('https://' + page + '.com/')
     time.sleep(delay)
-    pickle.dump(TmpDriver.get_cookies() , open((CookieDirectory +StringId+ page+ "Cookies.pkl"),"wb"))
+    pickle.dump(TmpDriver.get_cookies() , open((CookieDirectory +StringID+ page+ "Cookies.pkl"),"wb"))
     print('cookies dumped')
 
 
-CookieDumper(HannesLocal, HannesProxy, "Hannes", "Twitter", 20)
+CookieDumper("Kai", "Google", 3)

@@ -12,19 +12,24 @@ def RedditLiker(driver, StringId, searchTerms, directory):
         searchString = "https://www.reddit.com/search?q=" + searchTerm + "&t=all&sort=new"
         try:
             driver.get(searchString)
-            time.sleep(5)
+            time.sleep(2)
             print ("Page is ready!")
         except TimeoutException:
             print ("Loading took too much time!")
 
-        SubscribeButtons = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div/div/div[1]/div[4]/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/a/div[3]/button")
-        lmt = int(len(SubscribeButtons))-1
+        SubscribeButtons = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/a/div[3]/button")
+        print(len(SubscribeButtons))
         try:
-            SubscribeButtons[randint(0, lmt)].click()
+            randomNumber = random.sample(range(0, 3), 2)
+            randomNumber.sort()
+            SubscribeButtons[randomNumber[0]].click()
+            time.sleep(1)
+            SubscribeButtons[randomNumber[1]].click()
+            time.sleep(1)
         except Exception:
             print ("SubscribeButtons could not be scrolled into view")
 
-        LikeButtons = driver.find_elements_by_xpath('/html/body/div[1]/div/div[2]/div/div/div[1]/div[4]/div/div/div/div[2]/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div[1]/div/button[1]')
+        LikeButtons = driver.find_elements_by_xpath('/html/body/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[2]/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div[1]/div/button[1]')
         lmt = len(LikeButtons)
         SmallLmt = int(lmt/3)
         randomNumber = random.sample(range(0, lmt), SmallLmt)

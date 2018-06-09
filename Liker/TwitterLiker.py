@@ -14,7 +14,7 @@ def TwitterLiker(driver, StringId, searchTerms, directory):
         except TimeoutException:
             print ("Loading took too much time!")
 
-        FollowButtons = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li[1]/div[2]/div[2]/div/div/div/div[1]/div/div/div/span[2]/button[1]")
+        FollowButtons = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li[1]/div[2]/div/div/div/div/div[1]/div/div/div/span[2]/button[1]")
         for btn in FollowButtons:
             try:
                 btn.click()

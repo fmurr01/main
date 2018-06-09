@@ -3,7 +3,6 @@ import time
 import random
 from random import randint
 
-
 def BildLiker(driver, StringId, searchTerms, directory):
 
     for searchTerm in searchTerms:
@@ -20,4 +19,9 @@ def BildLiker(driver, StringId, searchTerms, directory):
             News = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div[5]/div/section/ol/li/div/a/img")
             News[ran].click()
             time.sleep(3)
-            driver.back()
+            loop = True
+            while loop:
+                driver.back()
+                time.sleep(3)
+                if "suche" in driver.current_url:
+                    loop = False
