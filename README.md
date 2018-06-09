@@ -4,7 +4,8 @@
 2. Installiere pip
 3. Installiere Selenium
 4. Downloade geckodriver für Mozilla. Muss im PATH sein.
-5. Starte "Automatisierte Profilvalidierung"
+5. Pfade und Einstellungen in der 'config.ini' konfigurieren.
+6. Starte "Automatisierte Profilvalidierung"
 
 
 
