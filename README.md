@@ -10,4 +10,4 @@
 ## Optional:
 8. Download an IDE for the Python application e.g. Atom. Install the package "script" to execute code directly
 9. Start scripts with CTRL+SHiFT+B
-10. Install Beautifulsoup 4 and Pandas with PIP
+10. Install Beautifulsoup 4, Pandas and Tabulate with PIP
