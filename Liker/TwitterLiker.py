@@ -3,8 +3,13 @@ import time
 import random
 from random import randint
 
-def TwitterLiker(driver, StringId, searchTerms, directory):
+#This method is responsible for automising twitter activity. It receives the driver(the webdriver that runs firefox)
+#the name of the user (StringId) and the interests of the user (search terms)
+def TwitterLiker(driver, StringId, searchTerms):
 
+#Each serch term is being used in the twitter search by adding it to the URL.
+#On that page the shown users will receive a follow.
+#To get newer tweets we jump to the "new" page and randomly like 3 shown tweets.
     for searchTerm in searchTerms:
         searchString = "https://twitter.com/search?q=" + searchTerm + "&src=typd"
         try:
@@ -19,7 +24,7 @@ def TwitterLiker(driver, StringId, searchTerms, directory):
             try:
                 btn.click()
             except Exception:
-                print ("Follow could not be scrolled into view")
+                print ("Already Followed/Follow could not be scrolled into view")
 
         searchString2 = "https://twitter.com/search?f=tweets&vertical=news&q=" + searchTerm + "&src=typd"
         try:
@@ -28,11 +33,7 @@ def TwitterLiker(driver, StringId, searchTerms, directory):
             print ("Page is ready!")
         except TimeoutException:
             print ("Loading took too much time!")
-        Heart1 = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li/div/div[2]/div[3]/div[2]/div[3]/button[1]")
-        Heart2 = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li/div/div[2]/div[4]/div[2]/div[3]/button[1]")
-        Heart3 = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li/div/div[2]/div[5]/div[2]/div[3]/button[1]")
-
-        HeartButtons = Heart1 + Heart2 + Heart3
+        HeartButtons = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li/div/div[2]/div/div[2]/div[3]/button[1]")
         randomNumber = random.sample(range(0, 9), 3)
         randomNumber.sort()
         for i in range (0, 3):

@@ -3,11 +3,14 @@ import time
 import random
 from random import randint
 
+#This method is responsible for automising reddit activity. It receives the driver(the webdriver that runs firefox)
+#the name of the user (StringId) and the interests of the user (search terms)
+def RedditLiker(driver, StringId, searchTerms):
 
-def RedditLiker(driver, StringId, searchTerms, directory):
-
-    #Loader(driver, StringId, "Reddit", directory)
-
+#Each serch term is being used in the reddit search by adding it to the URL.
+#Then 2 of the 3 shown subscribe options will be clicked and 1/3 of all shown inserations liked.
+#There are a bunch of sleeps, because even though ".get" waits for the entire page to load,
+#Sometimes the buttons load a little bit later. Also it fakes real behaviour better.
     for searchTerm in searchTerms:
         searchString = "https://www.reddit.com/search?q=" + searchTerm + "&t=all&sort=new"
         try:
@@ -18,7 +21,6 @@ def RedditLiker(driver, StringId, searchTerms, directory):
             print ("Loading took too much time!")
 
         SubscribeButtons = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/a/div[3]/button")
-        print(len(SubscribeButtons))
         try:
             randomNumber = random.sample(range(0, 3), 2)
             randomNumber.sort()
@@ -39,6 +41,3 @@ def RedditLiker(driver, StringId, searchTerms, directory):
                 LikeButtons[randomNumber[i]].click()
             except Exception:
                 print ("Like could not be scrolled into view")
-
-
-    #Dumper(driver, StringId, "Reddit", directory)

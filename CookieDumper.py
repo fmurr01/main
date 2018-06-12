@@ -1,34 +1,16 @@
 import pickle
 import time
 from selenium import webdriver
-from selenium.webdriver.common.proxy import Proxy, ProxyType
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import random
-from random import randint
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 from configparser import SafeConfigParser
+from AutomisedProfileValidation import Proxy
 
+#The CookieDumper helps dumping session cookies for each profile. The persistent cookies are saved in the Firefox profiles.
+#Dumping session cookies will help logging into the websites and is mandatory for AutomisedProfileValidation to work.
 config = SafeConfigParser()
 config.read('config.ini')
 
 CookieDirectory = config.get('directories', 'cookiedirectory')
 ProfileDirectory = config.get('directories', 'profiledirectory')
-
-def Proxy(proxy):
-
-    desired_capability = webdriver.DesiredCapabilities.FIREFOX
-    desired_capability['proxy'] = {
-                "proxyType": "manual",
-                "httpProxy": proxy,
-                "ftpProxy": proxy,
-                "sslProxy": proxy
-                }
-    return desired_capability
-
 
 def CookieDumper(StringID ,page, delay):
     TmpProfile = webdriver.FirefoxProfile(ProfileDirectory + config.get('profiles', StringID))
@@ -38,5 +20,8 @@ def CookieDumper(StringID ,page, delay):
     pickle.dump(TmpDriver.get_cookies() , open((CookieDirectory +StringID+ page+ "Cookies.pkl"),"wb"))
     print('cookies dumped')
 
-
+#Select the profile you want to dump cookies for and the website. Then choose a delay that allows you
+#to log into the profile account on that website. After the delay the cookies will be dumped.
+#Clicking on Browser options like "Save this password" will save the log-in cookies in the Firefox profile.
+#Which allows you to log-in without loading the session cookies and you can choose a very short delay.
 CookieDumper("Kai", "Google", 3)
