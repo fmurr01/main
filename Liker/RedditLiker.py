@@ -12,7 +12,7 @@ def RedditLiker(driver, StringId, searchTerms):
 #There are a bunch of sleeps, because even though ".get" waits for the entire page to load,
 #Sometimes the buttons load a little bit later. Also it fakes real behaviour better.
     for searchTerm in searchTerms:
-        searchString = "https://www.reddit.com/search?q=" + searchTerm + "&t=all&sort=new"
+        searchString = "https://new.reddit.com/search?q=" + searchTerm + "&t=all&sort=new"
         try:
             driver.get(searchString)
             time.sleep(2)
@@ -21,15 +21,14 @@ def RedditLiker(driver, StringId, searchTerms):
             print ("Loading took too much time!")
 
         SubscribeButtons = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/a/div[3]/button")
-        try:
-            randomNumber = random.sample(range(0, 3), 2)
-            randomNumber.sort()
-            SubscribeButtons[randomNumber[0]].click()
-            time.sleep(1)
-            SubscribeButtons[randomNumber[1]].click()
-            time.sleep(1)
-        except Exception:
-            print ("SubscribeButtons could not be scrolled into view")
+        randomNumber = random.sample(range(0, 3), 2)
+        randomNumber.sort()
+        for ran in randomNumber:
+            try:
+                SubscribeButtons[ran].click()
+                time.sleep(1)
+            except Exception:
+                print ("SubscribeButtons could not be scrolled into view")
 
         LikeButtons = driver.find_elements_by_xpath('/html/body/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[2]/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div[1]/div/button[1]')
         lmt = len(LikeButtons)

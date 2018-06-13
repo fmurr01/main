@@ -6,17 +6,7 @@ import pandas as pd
 from configparser import SafeConfigParser
 from selenium.webdriver.support import expected_conditions as EC
 import time
-
-def Proxy(proxy):
-
-    desired_capability = webdriver.DesiredCapabilities.FIREFOX
-    desired_capability['proxy'] = {
-                "proxyType": "manual",
-                "httpProxy": proxy,
-                "ftpProxy": proxy,
-                "sslProxy": proxy
-                }
-    return desired_capability
+from Support import *
 
 #load config
 config = SafeConfigParser()
@@ -43,14 +33,25 @@ for usr in user:
 
         #BeautifulSoup will scrape the Html source page and filter for set words
         soup=BeautifulSoup(driver.page_source, "html.parser")
-        price_box = soup.find('div', attrs={'class':'price'})
-
+        price_box = soup.find('span', attrs={'data-reactid':'76'}) #Esprit
+        #price_box = soup.find('span', attrs={'class':'price'}) #H&M, has severe bot protection
+        #price_box = soup.find('h4', attrs={'class':'h-text h-color-red title-3 h-p-top-m'}) #zalando
+        #price_box = soup.find('div', attrs={'class':'price orange'}) #cyberport
+        #price_box = soup.find('text', attrs={'class':'nbb-svg-outline'}) #notebooksbilliger, has bot protection
+        #price_box = soup.find('div', attrs={'itemprop':'price'}) #conrad, has bot protection
+        #price_box = soup.find('span', attrs={'itemprop':'price'}) #tchibo
+        #price_box = soup.find('div', attrs={'class':'price'}) #mediamarkt
+        #price_box = soup.find('span', attrs={'id':'normalPriceAmount'}) #otto
+        print(price_box.prettify())
         #Get only the price from the html line that contains it
+        price = "N/A"
         try:
             price = price_box.text
         except Exception:
-            print ("Loading took too much time!")
+            print ("No price found")
+
         datalist.append(price)
+
     metaDatalist.append(datalist)
     driver.quit()
 

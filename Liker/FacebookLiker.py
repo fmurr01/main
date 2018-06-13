@@ -31,6 +31,6 @@ def FacebookLiker(driver, StringId, searchTerms):
         LikeButtons = LikeButtons2 + LikeButtons3 + LikeButtons4
         for btn in LikeButtons:
             try:
-            btn.click()
+                btn.click()
             except Exception:
                 print ("Loading took too much time!")
