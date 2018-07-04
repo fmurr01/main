@@ -1,15 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+The purpose of this module is to alter the *-statement for the liker folder,
+so it only includes modules specified in the config
+"""
+
 from configparser import SafeConfigParser
 
-config = SafeConfigParser()
-config.read('config.ini')
+_config = SafeConfigParser()
+_config.read('config.ini')
 
-methods = config.get('methods', 'used').split()
+_methods = _config.get('methods', 'used').split()
 
-allMethods=[]
-for i in range(len(methods)):
-    allMethods.append(methods[i])
+_allMethods=[]
+for i in range(len(_methods)):
+    _allMethods.append(_methods[i])
 
-
-#allMethods = allMethods.replace(' , ")
-
-__all__ = allMethods
+__all__ = _allMethods
