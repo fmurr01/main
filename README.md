@@ -1,4 +1,4 @@
-# Installationsanleitung
+# Installation guide
 1. Install python3
 2. Install requirements.txt using pip3 (should be included in python3) Cmd: pip3 install -r requirements.txt
 4. Download geckodriver for Mozilla. Has to be in PATH.
