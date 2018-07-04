@@ -11,7 +11,7 @@ import liker
 from liker import *
 from support import *
 
-class AutomisedProfileValidation():
+class automisedProfileValidation():
     """
     This class implements validateProfiles, which
     automatically executes all specified liker-methods
