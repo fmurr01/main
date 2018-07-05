@@ -34,7 +34,7 @@ class automisedProfileValidation():
         _config.read('config.ini')
 
         _methods = _config.get('methods', 'used').split()
-        _user = _config.get('user', 'used').split()
+        _user = _config.get('validateUser', 'used').split()
 
         _cookieDirectory = _config.get('directories', 'cookieDirectory')
         _profileDirectory = _config.get('directories', 'profileDirectory')
