@@ -10,6 +10,7 @@ import pickle
 import liker
 from liker import *
 from support import *
+from priceWebScraper import priceWebScraper
 
 class automisedProfileValidation():
     """
@@ -33,12 +34,14 @@ class automisedProfileValidation():
         _config = SafeConfigParser()
         _config.read('config.ini')
 
-        _methods = _config.get('methods', 'used').split()
-        _user = _config.get('validateUser', 'used').split()
+        _methods = _config.get('methods', 'liker').split()
+        _scraperUsed = _config.get('methods', 'scraper')
+        _user = _config.get('user', 'used').split()
 
         _cookieDirectory = _config.get('directories', 'cookieDirectory')
         _profileDirectory = _config.get('directories', 'profileDirectory')
 
+        _driverArray = []
 
         for _usr in _user:
             print(_usr)
@@ -60,6 +63,12 @@ class automisedProfileValidation():
                 _page = _page.title()
                 support.dumper(_driver, _usr, _page, _cookieDirectory)
 
-            _driver.quit()
+            _driverArray.append(_driver)
+
+        #quit all drivers
+        if (_scraperUsed == "True"):
+            priceWebScraper.scrapePrices(_driverArray)
+            for _drvr in _driverArray:
+                _drvr.quit()
 
     validateProfiles()
