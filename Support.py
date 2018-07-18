@@ -5,6 +5,7 @@ import pickle
 from selenium import webdriver
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 class support():
     """
@@ -79,7 +80,10 @@ class support():
         _tld = '.com/'
         if page == 'Bild':
             _tld = '.de/'
-        driver.maximize_window()
+        if "." in page:
+            _tld = ""
+        page = page.title()
+        #driver.maximize_window()
         driver.get('https://' + page + _tld)
         _cookies = pickle.load(open((directory +stringId+ page+ "Cookies.pkl"),"rb"))
         for _cookie in _cookies:

@@ -34,10 +34,12 @@ class twitterLiker():
             except TimeoutException:
                 print ("Loading took too much time!")
 
-            _followButtons = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li[1]/div[2]/div/div/div/div/div[1]/div/div/div/span[2]/button[1]")
+            _followButtons = driver.find_elements_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div/div/div[2]/div/div/div/div/div[2]/ol[1]/li[1]/div[2]/div/div/div/div/div[1]/div/div/div/span[2]")
+
+            print(len(_followButtons))
             for _btn in _followButtons:
                 try:
-                    btn.click()
+                    _btn.click()
                 except Exception:
                     print ("Already Followed/Follow could not be scrolled into view")
 

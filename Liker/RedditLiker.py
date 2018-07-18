@@ -45,14 +45,14 @@ class redditLiker():
                     time.sleep(1)
                 except Exception:
                     print ("SubscribeButtons could not be scrolled into view")
-            
-             _likeButtons = driver.find_elements_by_xpath('/html/body/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[2]/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div[1]/div/button[1]')
-             _lmt = len(_likeButtons)
-             _smallLmt = int(_lmt/3)
-             _randomNumber = random.sample(range(0, _lmt), _smallLmt)
-             _randomNumber.sort()
-             for i in range (0, _smallLmt):
-                 try:
-                     _likeButtons[_randomNumber[i]].click()
-                 except Exception:
-                     print ("Like could not be scrolled into view")
+
+            _likeButtons = driver.find_elements_by_xpath('/html/body/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[2]/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div[1]/div/button[1]')
+            _lmt = len(_likeButtons)
+            _smallLmt = int(_lmt/3)
+            _randomNumber = random.sample(range(0, _lmt), _smallLmt)
+            _randomNumber.sort()
+            for i in range (0, _smallLmt):
+                try:
+                    _likeButtons[_randomNumber[i]].click()
+                except Exception:
+                    print ("Like could not be scrolled into view")

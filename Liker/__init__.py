@@ -9,7 +9,7 @@ from configparser import SafeConfigParser
 _config = SafeConfigParser()
 _config.read('config.ini')
 
-_methods = _config.get('methods', 'used').split()
+_methods = _config.get('methods', 'liker').split()
 
 _allMethods=[]
 for i in range(len(_methods)):

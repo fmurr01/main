@@ -68,7 +68,7 @@ class automisedProfileValidation():
         #quit all drivers
         if (_scraperUsed == "True"):
             priceWebScraper.scrapePrices(_driverArray)
-            for _drvr in _driverArray:
-                _drvr.quit()
+            for _driver in _driverArray:
+                _driver.quit()
 
     validateProfiles()
