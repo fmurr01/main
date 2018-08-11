@@ -74,13 +74,15 @@ class priceWebScraper():
         #load config
         _config = SafeConfigParser()
         _config.read('config.ini')
-        _scrapeSitesArray = _config.get('pages', 'scrape').split()
+        _scrapeSitesArray = _config.get('scrape', 'pages').split()
+        _scrapeDelay = _config.get('scrape', 'delay')
+        _scrapeRepeats = _config.get('scrape', 'repeats')
         _profileDirectory = _config.get('directories', 'profileDirectory')
         _scrapeDirectory = _config.get('directories', 'scrapeDirectory')
         _cookieDirectory = _config.get('directories', 'cookieDirectory')
         _user = _config.get('user', 'used').split()
 
-        for _ in range(8):
+        for _ in range(int(_scrapeRepeats)):
             print("run " + str(_))
             _runIdentifier = "run " + str(datetime.datetime.now())[:19].replace(":", ".")
 
@@ -100,7 +102,7 @@ class priceWebScraper():
                     support.loader(_driver, _user[driverArray.index(_driver)], _scrape, _cookieDirectory)
                     time.sleep(2)
 
-                    _products = _config.get('pages', _scrape).split()
+                    _products = _config.get('scrape', _scrape).split()
 
                     for _prod in _products:
                         try:
@@ -163,4 +165,5 @@ class priceWebScraper():
                 _df.to_csv((_datetime + " " +_scrape + '.csv'), sep='\t', encoding='utf-8')
                 print(_df)
                 print("Dataframe for " + _scrape + " generated")
-            time.sleep(1200)
+            if (_ < (int(_scrapeRepeats)-1)):
+                time.sleep(int(_scrapeDelay))

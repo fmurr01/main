@@ -1,0 +1,317 @@
+span#optiRealPersonContent { z-index: 9999; }
+span#optiRealPersonContent a { border: none; display: inherit !important }
+span#optiRealPersonContent a img { border: none; }
+span#optiRealPersonContent.rp-hide { display: none; }
+div#realperson_text_status_button { margin-bottom: 5px; }
+div#realperson_video_status_button { margin-bottom: 5px; }
+div#InviteLayerRealPersonname.hide { display: none; } 
+span.optiRealPersonStatusRightCenter { position: fixed !important; top: 50%; right: 0; z-index: 999; transform: translate(0, -50%); }
+span.optiRealPersonStatusLeftCenter { position: fixed !important; top: 50%; left: 0; z-index: 999; transform: translate(0, -50%); }
+span.optiRealPersonStatusLayerChat { position: fixed; bottom: 0; right: 20px; } 
+span.optiRealPersonStatusLayerChat.hide { display: none; }
+div#optiRealPersonChatLayerClose.hide { display: none; }
+div#optiRealPersonChatContentBorder.roundBottomCorner { border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; }
+div#optiRealPersonChatContentBorder { position: fixed; top: 100px; left: 100px; width: 332px; border: none; display: none; z-index: 9999999; overflow: hidden; background-color: #fff; border-top-left-radius: 7px; border-top-right-radius: 7px; }
+div#optiRealPersonChatContentBorder.minimized { height: 35px; width: 203px; /* margin-top: 3px; */ }
+div#optiRealPersonChatContentBorder div.realperson-layer-header { cursor:move; width:100%; height:35px; color:white; background: #272727; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div.image { display: none; left: 10px; width: 33px; height: 30px; position: absolute; background: url(../images/layer/chat-icon.png) no-repeat; cursor: pointer; background-position: center center; }
+div#optiRealPersonChatContentBorder.minimized div.realperson-layer-header div.image { display: block; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div.realperson-chat-icon {
+	left:10px;
+	width:17px;
+	height:18px;
+	top:11px;
+	position:absolute;
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+div#optiRealPersonChatContentBorder div.realperson-layer-header div.realperson-chat-title { display: block; font-family: Arial, Verdana, "Times New Roman", Times, serif; font-size: 14px; padding-left: 36px; position: absolute; color: white; font-weight: normal; line-height: 35px; margin-top: 1px; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div.realperson-chat-buttons { float: right; max-height: 35px; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div.realperson-chat-buttons ul { list-style: none; margin: 0; padding: 0; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div.realperson-chat-buttons ul li { float: left; margin: 0; margin-top: 3px; padding: 0; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div#optiRealPersonChatLayerMinimize { display: inline-block; width:30px; height:30px; background:url(../images/layer/minimize.png) center center no-repeat; cursor:pointer; }
+div#optiRealPersonChatContentBorder.minimized div.realperson-layer-header div#optiRealPersonChatLayerMinimize { background:url(../images/layer/maximize.png) center center no-repeat; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div#optiRealPersonChatLayerPopup { display: inline-block; width: 30px; height: 30px; background: url(../images/layer/popup.png) center center no-repeat; cursor: pointer; }
+div#optiRealPersonChatContentBorder.minimized div.realperson-layer-header div#optiRealPersonChatLayerPopup { display: none; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div#optiRealPersonChatLayerClose { display: inline-block; width:30px; height:30px; margin-right: 4px; background: url(../images/layer/close.png) center center no-repeat; cursor:pointer; }
+div#optiRealPersonChatContentBorder.minimized div.realperson-layer-header div#optiRealPersonChatLayerClose { display: none; }
+div#optiRealPersonChatContentBorder div.realperson-layer-header div#optiRealPersonChatLayerClose.hide { display: none; }
+#togetherjs-chat-button { display: none; } 
+#togetherjs-share-button { display: none; }
+#togetherjs-menu-update-name { display: none; } 
+#togetherjs-menu-update-avatar { display: none; } 
+#togetherjs-menu-update-color { display: none; } 
+#togetherjs-menu-feedback { display: none; } 
+#togetherjs-menu-help { display: none; } 
+#togetherjs-menu .togetherjs-hr { display: none; }
+.togetherjs-participant-window-row { display: none; }
+#togetherjs-dock { background-image:url(../images/logo_togetherjs.jpg); background-position-y: bottom; background-position: bottom; background-repeat: no-repeat; }
+#togetherjs-dock { height: 251px !important }
+#togetherjs-dock-anchor { background-color: #0095dd; }
+#togetherjs-buttons{ background-color: #0095dd; }
+#togetherjs-profile-button { background-color: #0095dd !important; }
+.togetherjs-dock-person { background-color: #0095dd !important; }
+
+.realperson-animated {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-fill-mode: forwards;
+		  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+		  animation-direction: normal;
+}
+
+@-webkit-keyframes realperson-hinge {
+  0% {
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+  }
+
+  20%, 60% {
+    -webkit-transform: rotate3d(0, 0, 1, 80deg);
+            transform: rotate3d(0, 0, 1, 80deg);
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+  }
+
+  40%, 80% {
+    -webkit-transform: rotate3d(0, 0, 1, 60deg);
+            transform: rotate3d(0, 0, 1, 60deg);
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 700px, 0);
+            transform: translate3d(0, 700px, 0);
+    opacity: 0;
+    display:none;
+  }
+}
+
+@keyframes realperson-hinge {
+  0% {
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+  }
+
+  20%, 60% {
+    -webkit-transform: rotate3d(0, 0, 1, 80deg);
+            transform: rotate3d(0, 0, 1, 80deg);
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+  }
+
+  40%, 80% {
+    -webkit-transform: rotate3d(0, 0, 1, 60deg);
+            transform: rotate3d(0, 0, 1, 60deg);
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 700px, 0);
+            transform: translate3d(0, 700px, 0);
+    opacity: 0;
+    display:none;
+  }
+} 
+
+.realperson-hinge {
+  -webkit-animation-name: realperson-hinge;
+          animation-name: realperson-hinge;
+}
+
+
+@-webkit-keyframes realperson-zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes realperson-zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.realperson-zoomIn {
+  -webkit-animation-name: realperson-zoomIn;
+          animation-name: realperson-zoomIn;
+}
+
+
+@-webkit-keyframes realperson-zoomOut {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes realperson-zoomOut {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.realperson-zoomOut {
+  -webkit-animation-name: realperson-zoomOut;
+          animation-name: realperson-zoomOut;
+}
+
+@keyframes realperson-bounce {
+  from, 20%, 53%, 80%, to { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); transform: translate3d(0,0,0); }
+  40%, 43% { animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); transform: translate3d(0, -30px, 0); }
+  70% { animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); transform: translate3d(0, -15px, 0); }
+  90% { transform: translate3d(0,-4px,0); }
+}
+.realperson-bounce { animation-name: realperson-bounce; transform-origin: center bottom; }
+
+@keyframes realperson-flash {
+  from, 50%, to { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+.realperson-flash { animation-name: realperson-flash; }
+
+@keyframes realperson-pulse {
+  from { transform: scale3d(1, 1, 1); }
+  50% { transform: scale3d(1.05, 1.05, 1.05); }
+  to { transform: scale3d(1, 1, 1); }
+}
+.realperson-pulse { animation-name: realperson-pulse; }
+
+@keyframes realperson-rubberBand {
+  from { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, .95, 1); }
+  to { transform: scale3d(1, 1, 1); }
+}
+.realperson-rubberBand { animation-name: realperson-rubberBand; }
+
+@keyframes realperson-shake {
+  from, to { transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% { transform: translate3d(-10px, 0, 0); }
+  20%, 40%, 60%, 80% { transform: translate3d(10px, 0, 0); }
+}
+.realperson-shake { animation-name: realperson-shake; }
+
+@keyframes realperson-swing {
+  20% { transform: rotate3d(0, 0, 1, 15deg); }
+  40% { transform: rotate3d(0, 0, 1, -10deg); }
+  60% { transform: rotate3d(0, 0, 1, 5deg); }
+  80% { transform: rotate3d(0, 0, 1, -5deg); }
+  to { transform: rotate3d(0, 0, 1, 0deg); }
+}
+.realperson-swing { transform-origin: top center; animation-name: realperson-swing; }
+
+@keyframes realperson-tada {
+  from { transform: scale3d(1, 1, 1); }
+  10%, 20% { transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  to { transform: scale3d(1, 1, 1); }
+}
+.realperson-tada { animation-name: realperson-tada; }
+
+@keyframes realperson-wobble {
+  from { transform: none; }
+  15% { transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% { transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% { transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% { transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% { transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  to { transform: none; }
+}
+.realperson-wobble { animation-name: realperson-wobble; }
+
+@keyframes realperson-jello {
+  from, 11.1%, to { transform: none; }
+  22.2% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+  88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+}
+.realperson-jello { animation-name: realperson-jello; transform-origin: center; }
+
+
+/* intentionally deactivated due to breaking 3rd party cookies */
+div#optiRealPersonChatContentBorder div.realperson-layer-header div#optiRealPersonChatLayerPopup {
+	display: none;
+}
+
+.realperson_invitelayer {
+    z-index:500;
+}
+
+∞A9ê      [M€ˇ[M€ˇ?KZ+[WW   =    :https://chat300.realperson.de/system/css/realperson-code.css necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Date: Tue, 17 Jul 2018 12:06:49 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips
+Strict-Transport-Security: max-age=15768000
+Last-Modified: Tue, 27 Feb 2018 02:01:00 GMT
+ETag: "2fb5-56627ff891ffa"
+Accept-Ranges: bytes
+Content-Length: 12213
+Access-Control-Allow-Origin: *
+Content-Type: text/css
+ original-response-headers Date: Tue, 17 Jul 2018 12:06:49 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips
+Strict-Transport-Security: max-age=15768000
+Last-Modified: Tue, 27 Feb 2018 02:01:00 GMT
+ETag: "2fb5-56627ff891ffa"
+Accept-Ranges: bytes
+Content-Length: 12213
+Access-Control-Allow-Origin: *
+Connection: close
+Content-Type: text/css
+ uncompressed-len 0 net-response-time-onstart 374 net-response-time-onstop 378   /µ
