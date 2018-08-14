@@ -62,11 +62,13 @@ class googleLiker():
                 except Exception:
                     print ("GoogleLiker: Not enough interesting news")
                 time.sleep(5)
-    #Sometimes the ".back"-Method does not work properly if the site has pop-ups, so it will be looped until it works.
+                #Sometimes the ".back"-Method does not work properly if the site has pop-ups, so it will be looped until it works.
                 _loop = True
                 while _loop:
+                    try:
+                        driver.back()
+                    except TimeoutException:
+                        print ("Loading took too much time!")
+                    time.sleep(3)
                     if "google.com" in driver.current_url:
                         _loop = False
-                    else:
-                        driver.back()
-                        time.sleep(3)

@@ -40,7 +40,10 @@ class bildLiker():
                 _loop = True
     #Sometimes the ".back"-Method does not work properly if the site has pop-ups, so it will be looped until it works.
                 while _loop:
-                    driver.back()
+                    try:
+                        driver.back()
+                    except TimeoutException:
+                        print ("Loading took too much time!")
                     time.sleep(3)
                     if ".de/suche" in driver.current_url:
                         _loop = False

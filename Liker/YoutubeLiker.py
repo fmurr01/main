@@ -52,7 +52,10 @@ class youtubeLiker():
     #Sometimes the ".back"-Method does not work properly if the site has pop-ups, so it will be looped until it works.
         loop = True
         while loop:
-            driver.back()
+            try:
+                driver.back()
+            except TimeoutException:
+                print ("Loading took too much time!")
             time.sleep(5)
             if "results?search" in driver.current_url:
                 loop = False

@@ -141,8 +141,14 @@ class priceWebScraper():
                                 _price = _price[_middle-i:_middle+3]
                                 _price = _price.replace("-","00")
                                 _price = _price.replace(".","")
+                                _priceFound = _priceFound + 1
                             except Exception:
-                                print ("No price found")
+                                pass   #do nothing
+
+                        if (_price != "00,00"):
+                            print("Price found!")
+                        else: print("No Price Found, default is 00,00")
+
                         _datalist.append(_price)
 
                     _datetime = str(datetime.datetime.now())
@@ -160,9 +166,9 @@ class priceWebScraper():
                 _df = pd.DataFrame(_metaDatalist, columns=_products)
                 _df = _df.rename(index=dict(zip(_keys, _user)))
                 _df = _df.T
-                priceWebScraper.createFolder(_scrapeDirectory, _runIdentifier)
-                os.chdir(_scrapeDirectory + "/" + _runIdentifier)
-                _df.to_csv((_datetime + " " +_scrape + '.csv'), sep='\t', encoding='utf-8')
+                #priceWebScraper.createFolder(_scrapeDirectory, _runIdentifier)
+                #os.chdir(_scrapeDirectory + "/" + _runIdentifier)
+                #_df.to_csv((_datetime + " " +_scrape + '.csv'), sep='\t', encoding='utf-8')
                 print(_df)
                 print("Dataframe for " + _scrape + " generated")
             if (_ < (int(_scrapeRepeats)-1)):

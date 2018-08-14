@@ -9,8 +9,8 @@ from selenium.common.exceptions import TimeoutException
 
 class support():
     """
-    This class implements helpful methods for automisedProfileValidation,
-    priceWebScraper and cookieDumper
+    This class implements helpful methods for start,
+    priceWebScraper, cookieDumper and every *liker
     """
 
     def proxy(proxy):
@@ -84,10 +84,15 @@ class support():
             _tld = ""
         page = page.title()
         #driver.maximize_window()
-        driver.get('https://' + page + _tld)
-        _cookies = pickle.load(open((directory +stringId+ page+ "Cookies.pkl"),"rb"))
-        for _cookie in _cookies:
-            driver.add_cookie(_cookie)
+        try:
+            driver.get('https://' + page + _tld)
+            print ("Page is ready!")
+            _cookies = pickle.load(open((directory +stringId+ page+ "Cookies.pkl"),"rb"))
+            for _cookie in _cookies:
+                driver.add_cookie(_cookie)
+        except TimeoutException:
+            print ("Loading took too much time!")
+
         try:
             driver.get('https://' + page + _tld)
             print ("Page is ready!")
